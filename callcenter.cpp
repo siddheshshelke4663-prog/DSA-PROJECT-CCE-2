@@ -6,19 +6,16 @@ struct Node {
     Node* next;
 };
 
-Node* front = NULL;
-Node* rear = NULL;
+Node *front = NULL, *rear = NULL;
 
 void addCustomer(int id) {
-    Node* newNode = new Node;
-    newNode->id = id;
-    newNode->next = NULL;
+    Node* n = new Node{id, NULL};
 
-    if (rear == NULL) {
-        front = rear = newNode;
-    } else {
-        rear->next = newNode;
-        rear = newNode;
+    if (front == NULL)
+        front = rear = n;
+    else {
+        rear->next = n;
+        rear = n;
     }
 
     cout << "Customer " << id << " added to queue.\n";
@@ -34,10 +31,7 @@ void serveCustomer() {
     cout << "Serving customer " << temp->id << ".\n";
     front = front->next;
 
-    if (front == NULL) {
-        rear = NULL;
-    }
-
+    if (front == NULL) rear = NULL;
     delete temp;
 }
 
@@ -47,14 +41,9 @@ void displayQueue() {
         return;
     }
 
-    Node* temp = front;
     cout << "Customers in queue: ";
-
-    while (temp != NULL) {
-        cout << temp->id << " ";
-        temp = temp->next;
-    }
-
+    for (Node* t = front; t != NULL; t = t->next)
+        cout << t->id << " ";
     cout << endl;
 }
 
@@ -62,11 +51,8 @@ int main() {
     int choice, id;
 
     do {
-        cout << "\n1. Add Customer\n";
-        cout << "2. Serve Customer\n";
-        cout << "3. Display Queue\n";
-        cout << "4. Exit\n";
-        cout << "Enter choice: ";
+        cout << "\n1. Add Customer\n2. Serve Customer\n"
+             << "3. Display Queue\n4. Exit\nEnter choice: ";
         cin >> choice;
 
         switch (choice) {
@@ -75,23 +61,13 @@ int main() {
                 cin >> id;
                 addCustomer(id);
                 break;
-
-            case 2:
-                serveCustomer();
-                break;
-
-            case 3:
-                displayQueue();
-                break;
-
-            case 4:
-                cout << "Exiting program.\n";
-                break;
-
-            default:
-                cout << "Invalid choice.\n";
+            case 2: serveCustomer(); break;
+            case 3: displayQueue(); break;
+            case 4: cout << "Exiting program.\n"; break;
+            default: cout << "Invalid choice.\n";
         }
     } while (choice != 4);
 
     return 0;
 }
+
