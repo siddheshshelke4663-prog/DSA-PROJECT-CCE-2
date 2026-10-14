@@ -1,38 +1,69 @@
+Call Centre Queue Using Linked List
 
-# Call Centre Queue Using Linked List
+Aim
 
-## Aim
-To implement a call centre queue using a linked list in C++.
+To implement a call centre queue using a singly linked list in C++.
 
-## Description
-This project manages customer calls using a queue implemented with a linked list. Customers are served in First In, First Out (FIFO) order.
+Description
 
-## Features
-- Add a customer to the queue
-- Serve the next customer
-- Display all customers in the queue
-- Exit the program
+This project simulates a call centre system in which customer calls are managed using a queue. Customers are served in the order they arrive, following the FIFO (First In, First Out) principle.
 
-## Concepts Used
-- C++
-- Linked List
-- Queue
+Features
+
+- Add a customer to the queue.
+- Serve the next customer.
+- Display all waiting customers.
+- Exit the program.
+
+Concepts Used
+
+- C++ Programming
+- Singly Linked List
+- Queue Data Structure
 - FIFO (First In, First Out)
+- Pointers and Dynamic Memory Allocation
 
-## How to Run
-1. Compile the program using a C++ compiler.
-2. Run the executable file.
-3. Select an option from the menu.
+Working
 
-## Sample Output
+- Each node stores a customer ID and a pointer to the next node.
+- "front" points to the first customer in the queue.
+- "rear" points to the last customer in the queue.
+- New customers are added at the rear.
+- Customers are served and removed from the front.
+
+How to Compile and Run
+
+Compile using a C++ compiler:
+
+g++ main.cpp -o callcentre
+
+Run the program:
+
+./callcentre
+
+On Windows, run:
+
+callcentre.exe
+
+Sample Output
+
 1. Add Customer
 2. Serve Customer
 3. Display Queue
 4. Exit
-
 Enter choice: 1
 Enter customer ID: 101
 Customer 101 added to queue.
 
-## Conclusion
-This project demonstrates the implementation of a queue using a linked list for managing customer calls.
+Enter choice: 3
+Customers in queue: 101
+
+Enter choice: 2
+Serving customer 101.
+
+Enter choice: 4
+Exiting program.
+
+Conclusion
+
+This project demonstrates how a queue can be implemented using a singly linked list in C++. It helps in understanding FIFO, pointers, dynamic memory allocation, and basic queue operations.
